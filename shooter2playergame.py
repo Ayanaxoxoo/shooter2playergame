@@ -14,7 +14,8 @@ red_bullets = []
 yellow_bullets = []
 health_red = 5
 health_yellow = 5
-font = pygame.font.SysFont("Times New Roman",90)
+font = pygame.font.SysFont("Times New Roman",30)
+font2 = pygame.font.SysFont("Times New Roman",90)
 
 
 playing=True
@@ -90,9 +91,24 @@ while playing:
     print(health_red)
     print(health_yellow)
 
-    yellow_score = font.render("Yellow Health"+str(health_yellow),True,"white")
-    red_score = font.render("Red Health"+str(health_red), True, "white")
-    screen.blit(yellow_score,(50,50))
-    screen.blit(red_score,(90,80))
+    yellow_score = font.render("Yellow Health:"+str(health_yellow),True,"white")
+    red_score = font.render("Red Health:"+str(health_red), True, "white")
+    screen.blit(yellow_score,(40,60))
+    screen.blit(red_score,(580,60))
     
+    if health_yellow <=0:
+        red_win = font2.render("Red Wins!",True,"white")
+        screen.blit(red_win, (250,180))
+        pygame.display.update()
+        pygame.time.delay(5000)
+        pygame.quit()
+
+    if health_red <=0:
+        yellow_win = font2.render("Yellow Wins!",True,"white")
+        screen.blit(yellow_win, (250,180))
+        pygame.display.update()
+        pygame.time.delay(5000)
+        pygame.quit()
+
+
     pygame.display.update()
